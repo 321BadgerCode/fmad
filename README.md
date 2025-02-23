@@ -8,7 +8,7 @@
 	<strong>Calculate derivatives using Forward Mode Automatic Differentiation!</strong>
 </p>
 
-![NOTE]
+> [!NOTE]
 > The `normal` method for calculating the derivative of an equation only uses the power rule currently, and not a rule-based methodology that would include the sum, product, quotient, and chain rules.
 
 ## 🚀 Overview
