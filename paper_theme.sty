@@ -1,0 +1,63 @@
+\ProvidesPackage{paper_theme}
+
+% Page Layout
+\RequirePackage{geometry}
+\geometry{a4paper, margin=1in}
+
+% Colors
+\RequirePackage{xcolor}
+\definecolor{background}{HTML}{1E1E1E} % Dark gray
+\definecolor{textcolor}{HTML}{D4D4D4} % Light gray
+\definecolor{accentcolor}{HTML}{569CD6} % Blue
+\definecolor{mathcolor}{HTML}{CE9178} % Orange
+
+% Apply Colors
+\pagecolor{background}
+\color{textcolor}
+
+% Font
+\RequirePackage{lmodern}
+\renewcommand{\familydefault}{\sfdefault}
+
+% Hyperlinks
+\RequirePackage{hyperref}
+\hypersetup{
+	colorlinks=true,
+	linkcolor=accentcolor,
+	urlcolor=accentcolor,
+	citecolor=accentcolor
+}
+
+% Math Formatting
+\RequirePackage{amsmath, amssymb}
+\everymath{\color{mathcolor}}
+
+% Title Formatting
+\RequirePackage{titlesec}
+\titleformat{\section}{\color{accentcolor}\Large\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}{\color{accentcolor}\large\bfseries}{\thesubsection}{1em}{}
+\titleformat{\subsubsection}{\color{accentcolor}\normalsize\bfseries}{\thesubsubsection}{1em}{}
+
+% Table of Contents
+\RequirePackage{tocloft}
+\renewcommand{\cftsecfont}{\color{accentcolor}\bfseries}
+\renewcommand{\cftsubsecfont}{\color{accentcolor}}
+\renewcommand{\cftsubsubsecfont}{\color{accentcolor}}
+
+% Listings (for Code)
+\RequirePackage{listings}
+\lstset{
+	backgroundcolor=\color{background},
+	basicstyle=\ttfamily\color{textcolor},
+	keywordstyle=\color{accentcolor},
+	stringstyle=\color{mathcolor},
+	commentstyle=\color{gray},
+	numberstyle=\color{gray},
+	breaklines=true
+}
+
+% Graphics
+\RequirePackage{graphicx}
+\RequirePackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usetikzlibrary{shadows,shapes,positioning,arrows.meta}

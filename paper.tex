@@ -1,0 +1,83 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage{amsmath,amssymb,amsfonts,graphicx,xcolor}
+\usepackage{tikz,pgfplots}
+\usepackage{geometry}
+\usepackage{hyperref}
+\input{paper_theme.sty}
+
+\title{\textbf{Comprehensive Guide to Calculating Derivatives}}
+\author{Badger Code}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\section{Introduction}
+Derivatives are fundamental in calculus, allowing us to understand rates of change. This paper explores different methods of computing derivatives: the limit definition, L'Hôpital's Rule, rule-based differentiation, and forward-mode automatic differentiation.
+
+\section{Derivative Definition via Limits}
+The derivative of a function $f(x)$ at a point $x=a$ is defined as:
+\begin{equation}
+	f'(a) = \lim_{h \to 0} \frac{f(a+h) - f(a)}{h}
+\end{equation}
+To illustrate, consider $f(x) = x^2$. Using the limit definition:
+\begin{align*}
+	f'(x) &= \lim_{h \to 0} \frac{(x+h)^2 - x^2}{h} \\
+	&= \lim_{h \to 0} \frac{x^2 + 2xh + h^2 - x^2}{h} \\
+	&= \lim_{h \to 0} (2x + h) = 2x.
+\end{align*}
+Thus, $\frac{d}{dx} x^2 = 2x$.
+
+\section{L'Hôpital's Rule}
+If a function results in an indeterminate form such as $\frac{0}{0}$ or $\frac{\infty}{\infty}$, L'Hôpital's Rule states:
+\begin{equation}
+	\lim_{x \to a} \frac{f(x)}{g(x)} = \lim_{x \to a} \frac{f'(x)}{g'(x)},
+\end{equation}
+provided the limit on the right exists.
+
+Consider:
+\begin{equation}
+	\lim_{x \to 0} \frac{\sin x}{x}.
+\end{equation}
+Since both numerator and denominator approach zero:
+\begin{equation}
+	\lim_{x \to 0} \frac{\sin x}{x} = \lim_{x \to 0} \frac{\cos x}{1} = 1.
+\end{equation}
+
+\section{Rule-Based Differentiation}
+Several fundamental differentiation rules simplify computations:
+\begin{itemize}
+	\item \textbf{Power Rule:} $\frac{d}{dx} x^n = nx^{n-1}$.
+	\item \textbf{Product Rule:} $(fg)' = f'g + fg'$.
+	\item \textbf{Quotient Rule:} $\left(\frac{f}{g}\right)' = \frac{f'g - fg'}{g^2}$.
+	\item \textbf{Chain Rule:} $\frac{d}{dx} f(g(x)) = f'(g(x)) g'(x)$.
+\end{itemize}
+
+Example: Compute $\frac{d}{dx} (x^3 \sin x)$. Using the product rule:
+\begin{align*}
+	(x^3 \sin x)' &= (x^3)' \sin x + x^3 (\sin x)' \\
+	&= 3x^2 \sin x + x^3 \cos x.
+\end{align*}
+
+\section{Forward-Mode Automatic Differentiation}
+Automatic differentiation (AD) uses dual numbers to compute derivatives efficiently. A dual number is defined as:
+\begin{equation}
+	x_\epsilon = x + \epsilon dx, \quad \text{where } \epsilon^2 = 0.
+\end{equation}
+For a function $f(x)$, we substitute $x_\epsilon$:
+\begin{equation}
+	f(x_\epsilon) = f(x) + \epsilon f'(x).
+\end{equation}
+Thus, $f'(x)$ is extracted directly.
+
+Example: Compute $f(x) = x^2$ using dual numbers:
+\begin{align*}
+	f(x_\epsilon) &= (x + \epsilon)^2 = x^2 + 2x \epsilon + \epsilon^2 \\
+	&= x^2 + 2x \epsilon. \quad \text{(Since $\epsilon^2 = 0$)}
+\end{align*}
+Hence, $f'(x) = 2x$.
+
+\section{Conclusion}
+This paper covered multiple derivative computation techniques, from the fundamental limit definition to advanced automatic differentiation. Each method serves different purposes, from theoretical rigor to computational efficiency.
+
+\end{document}
